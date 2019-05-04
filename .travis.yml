@@ -18,12 +18,8 @@ before_install:
 - xcodebuild -showsdks
 script:
 - set -o pipefail
-- echo "Check if the library described by the podspec can be built"
-- pod lib lint
-- carthage build --verbose --no-skip-current --platform macOS,iOS
-- carthage archive CocoaLumberjack
-after_success:
-- bash <(curl -s https://codecov.io/bash)
+- carthage build --no-skip-current --platform macOS,iOS CocoaLumberjack CocoaLumberjackSwift
+- carthage archive CocoaLumberjack CocoaLumberjackSwift
 deploy:
   provider: releases
   skip_cleanup: true
