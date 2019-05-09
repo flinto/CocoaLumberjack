@@ -15,6 +15,7 @@ before_install:
 - xcodebuild -showsdks
 script:
 - set -o pipefail
+- ./Scripts/bump-version.sh
 - carthage build --no-skip-current --platform macOS,iOS CocoaLumberjack CocoaLumberjackSwift
 - carthage archive CocoaLumberjack CocoaLumberjackSwift
 deploy:
