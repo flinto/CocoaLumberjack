@@ -17,6 +17,8 @@ script:
 - set -o pipefail
 - ./Scripts/bump-version.sh
 - carthage build --no-skip-current --platform macOS,iOS CocoaLumberjack CocoaLumberjackSwift
+- mv Carthage/Build/Mac/Static/* Carthage/Build/Mac
+- mv Carthage/Build/iOS/Static/* Carthage/Build/iOS
 - carthage archive CocoaLumberjack CocoaLumberjackSwift
 deploy:
   provider: releases
